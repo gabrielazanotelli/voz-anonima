@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voz Anônima — Feedback de RH</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ===================================================================
+       TELA 1: PÁGINA INICIAL
+       Aparece quando ninguém está logado e a URL não é o link do funcionário
+  =================================================================== -->
+  <section id="view-landing" class="view">
+    <div class="top-nav">
+      <div class="logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M7 10V7a5 5 0 0110 0v3" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        Voz Anônima
+        <span class="demo-mode-badge" title="Esta versão de demonstração guarda os dados só neste navegador — nada é enviado a um servidor.">Versão demo · dados salvos neste navegador</span>
+      </div>
+      <button class="btn secondary" id="btn-goto-hr-login">Acesso do RH</button>
+    </div>
+
+    <!-- Hero: abertura institucional, fala direto com quem lidera RH -->
+    <div class="hero">
+      <div class="eyebrow">Para líderes de RH</div>
+      <h1>Ouça o que sua equipe não diria de outro jeito</h1>
+      <p class="hero-sub">Um espaço simples e anônimo para coletar feedback sincero —
+      sem planilhas soltas, sem identificar quem respondeu, sem enrolação.</p>
+    </div>
+
+    <div class="signature">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="26" r="24" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+        <path d="M14 22h10l4 8h10" stroke="#5FA8A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="38" cy="30" r="3" fill="#5FA8A0"/>
+      </svg>
+      <p><strong>Como funciona o anonimato:</strong> existe um único link, compartilhado com toda
+      a equipe. O próprio navegador de quem responde guarda um aviso local de "já respondi",
+      só pra evitar respostas repetidas — e esse aviso não carrega nenhum vínculo com a resposta
+      enviada. Ninguém, nem o RH, consegue saber quem respondeu o quê.</p>
+    </div>
+
+    <!-- Linha do tempo em 3 passos: a jornada do RH usando a ferramenta -->
+    <div class="journey">
+      <div class="journey-step">
+        <div class="journey-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 5h16M4 12h10M4 19h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="journey-num">1</div>
+        <h3>Monte as perguntas</h3>
+        <p>Escolha entre escala de 1 a 5 ou texto livre — no seu ritmo, sem limite de perguntas.</p>
+      </div>
+      <div class="journey-connector"></div>
+      <div class="journey-step">
+        <div class="journey-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <div class="journey-num">2</div>
+        <h3>Compartilhe um link único</h3>
+        <p>Um único link para toda a equipe — cada dispositivo só consegue responder uma vez, e o sistema nunca identifica quem respondeu.</p>
+      </div>
+      <div class="journey-connector"></div>
+      <div class="journey-step">
+        <div class="journey-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 19V9M11 19V4M18 19v-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="journey-num">3</div>
+        <h3>Entenda o clima real</h3>
+        <p>Veja gráficos agregados e respostas de texto — nunca dados individuais que possam identificar alguém.</p>
+      </div>
+    </div>
+
+    <!-- Bloco de contexto: reforça o valor com uma referência de mercado (exemplo ilustrativo) -->
+    <div class="context-band">
+      <div class="context-stat">
+        <div class="context-num">3×</div>
+        <div class="context-label">mais respostas sinceras em pesquisas anônimas*</div>
+      </div>
+      <div class="context-stat">
+        <div class="context-num">0</div>
+        <div class="context-label">vínculo entre dispositivo e resposta guardado no sistema</div>
+      </div>
+      <div class="context-stat">
+        <div class="context-num">100%</div>
+        <div class="context-label">dos resultados vistos apenas de forma agregada</div>
+      </div>
+    </div>
+    <p class="context-footnote">*Número ilustrativo, apenas para referência — baseie decisões nos dados reais coletados aqui.</p>
+
+    <div class="card empty-state">
+      <p class="muted">Este site é acessado por um link único, compartilhado pelo RH com toda a equipe.</p>
+      <p class="muted">Se você é o Líder de RH, entre pelo botão acima.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TELA 2: LOGIN DO RH
+  =================================================================== -->
+  <section id="view-hr-login" class="view hidden">
+    <div class="top-nav">
+      <div class="logo">Voz Anônima</div>
+      <button class="btn secondary" id="btn-back-to-landing">Voltar</button>
+    </div>
+
+    <div class="card" style="max-width:380px;margin:40px auto;">
+      <div class="eyebrow">Área restrita</div>
+      <h2 style="margin-top:0;">Entrar como RH</h2>
+
+      <div class="field">
+        <label for="hr-user">Usuário</label>
+        <input id="hr-user" placeholder="rh" />
+      </div>
+      <div class="field">
+        <label for="hr-pass">Senha</label>
+        <input id="hr-pass" type="password" placeholder="••••••" />
+      </div>
+
+      <div id="hr-login-error" class="error-text"></div>
+
+      <button class="btn" style="width:100%;margin-top:8px;" id="btn-hr-login">Entrar</button>
+
+      <p class="muted" style="margin-top:14px;">Demo: usuário <b>rh</b> / senha <b>rh2026</b>.
+      Em produção seria autenticação real (sessão + senha criptografada no servidor).</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TELA 3: PAINEL DO RH (perguntas / link de acesso / resultados)
+  =================================================================== -->
+  <section id="view-hr-dashboard" class="view hidden">
+    <div class="top-nav">
+      <div class="logo">Voz Anônima · RH
+        <span class="demo-mode-badge" title="Esta versão de demonstração guarda os dados só neste navegador — nada é enviado a um servidor.">Versão demo · dados salvos neste navegador</span>
+      </div>
+      <button class="btn secondary" id="btn-hr-logout">Sair</button>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="perguntas">Perguntas</div>
+      <div class="tab" data-tab="link">Link de acesso</div>
+      <div class="tab" data-tab="resultados">Resultados</div>
+    </div>
+
+    <!-- Painel: Perguntas -->
+    <div id="panel-perguntas" class="tab-panel">
+
+      <!-- Cabeçalho de progresso do formulário -->
+      <div class="progress-bar-card">
+        <div class="progress-info">
+          <span class="progress-dot" id="progress-dot"></span>
+          <span id="progress-text">Nenhuma pergunta ainda</span>
+        </div>
+        <div class="progress-info muted-right">
+          <span id="progress-responses">0 respostas coletadas</span>
+        </div>
+      </div>
+
+      <div class="builder-grid">
+        <!-- Coluna esquerda: montar pergunta -->
+        <div class="card">
+          <h3 style="margin-top:0;">Montar formulário de feedback</h3>
+
+          <div class="field">
+            <label>Sugestões rápidas</label>
+            <div class="chip-row" id="suggestion-chips"></div>
+          </div>
+
+          <div class="field">
+            <label for="new-q-text">Nova pergunta</label>
+            <input id="new-q-text" placeholder="Ex: Você se sente ouvido pela liderança?" />
+          </div>
+          <div class="field" style="max-width:220px;">
+            <label for="new-q-type">Tipo de resposta</label>
+            <select id="new-q-type">
+              <option value="scale">Escala 1 a 5</option>
+              <option value="text">Texto livre</option>
+            </select>
+          </div>
+          <button class="btn teal" id="btn-add-question">Adicionar pergunta</button>
+        </div>
+
+        <!-- Coluna direita: preview ao vivo, como o funcionário vai ver -->
+        <div class="card preview-card">
+          <div class="eyebrow">Como o funcionário vai ver</div>
+          <div class="preview-frame">
+            <div class="preview-question" id="preview-question-text">Sua pergunta aparece aqui...</div>
+            <div class="preview-answer" id="preview-answer-area">
+              <div class="scale-btns preview-scale">
+                <div class="scale-btn">1</div><div class="scale-btn">2</div><div class="scale-btn">3</div><div class="scale-btn">4</div><div class="scale-btn">5</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumo do formulário atual: quantas perguntas de cada tipo -->
+          <div class="form-summary">
+            <div class="summary-item">
+              <span class="summary-num" id="summary-scale-count">0</span>
+              <span class="summary-label">de escala</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-item">
+              <span class="summary-num" id="summary-text-count">0</span>
+              <span class="summary-label">de texto livre</span>
+            </div>
+          </div>
+
+          <!-- Dicas de boas práticas para montar perguntas melhores -->
+          <div class="tips-box">
+            <div class="tips-title">💡 Dicas rápidas</div>
+            <ul class="tips-list">
+              <li>Prefira perguntas de <b>escala</b> para medir tendências ao longo do tempo.</li>
+              <li>Use <b>texto livre</b> com moderação — 1 ou 2 perguntas abertas já trazem bons insights.</li>
+              <li>Evite perguntas que só admitem uma resposta "certa" — isso reduz a sinceridade.</li>
+              <li>Formulários curtos (5–8 perguntas) têm mais chance de resposta completa.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="list-header">
+          <h3 style="margin:0;">Perguntas atuais (<span id="question-count">0</span>)</h3>
+          <button class="btn danger-ghost" id="btn-clear-questions">Limpar todas</button>
+        </div>
+        <p class="muted" id="reorder-hint" style="margin-top:-6px;">Arraste pelas setinhas para reordenar — a ordem aqui é a ordem que o funcionário vê.</p>
+        <!-- Cada pergunta cadastrada vira uma linha aqui dentro, gerada pelo script.js -->
+        <div id="question-list"></div>
+      </div>
+    </div>
+
+    <!-- Painel: Link de acesso -->
+    <div id="panel-link" class="tab-panel hidden">
+      <div class="card">
+        <h3 style="margin-top:0;">Seu link único de acesso</h3>
+        <p class="muted">Envie este mesmo link para toda a equipe — por e-mail, WhatsApp ou onde
+        preferir. Não precisa gerar um link por pessoa: o próprio dispositivo de quem responde
+        guarda um aviso local de que já respondeu, então cada aparelho só consegue enviar uma vez.</p>
+        <div class="link-row" style="margin-top:14px;">
+          <code id="access-link-text">—</code>
+          <button class="btn secondary" style="padding:5px 10px;font-size:12px;" id="btn-copy-link">Copiar link</button>
+        </div>
+        <div class="success-text" id="copy-feedback"></div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">Testar como funcionário</h3>
+        <p class="muted">Abra o formulário neste mesmo navegador para conferir como a equipe vai
+        ver as perguntas. Isso marca este dispositivo como "já respondido" — use "Reiniciar teste"
+        para poder testar de novo.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn teal" id="btn-test-form">Abrir formulário de teste</button>
+          <button class="btn secondary" id="btn-reset-device">Reiniciar teste neste dispositivo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Painel: Resultados -->
+    <div id="panel-resultados" class="tab-panel hidden">
+      <div class="list-header" style="margin-bottom:6px;">
+        <div class="eyebrow" style="margin:0;">Visão geral</div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn secondary" style="padding:6px 12px;font-size:12px;" id="btn-generate-demo">Gerar respostas</button>
+          <button class="btn danger-ghost" id="btn-clear-demo">Limpar respostas geradas</button>
+        </div>
+      </div>
+      <p class="muted" style="margin:0 0 14px;font-size:12px;">Use "Gerar respostas" para simular ~10 respostas e mostrar os gráficos funcionando — elas ficam marcadas como demonstração e não afetam respostas reais.</p>
+
+      <!-- Resumo geral: uma leitura rápida do clima da equipe, antes de entrar pergunta por pergunta -->
+      <div class="climate-card hidden" id="climate-summary">
+        <div class="climate-score" id="climate-score">0.0</div>
+        <div class="climate-info">
+          <div class="climate-label">Clima geral da equipe</div>
+          <div class="climate-desc" id="climate-desc"></div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-box">
+          <div class="stat-num" id="stat-total">0</div>
+          <div class="stat-label">Respostas recebidas</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" id="stat-questions">0</div>
+          <div class="stat-label">Perguntas no formulário</div>
+        </div>
+      </div>
+      <!-- Um card de gráfico (ou de respostas em texto) por pergunta cadastrada -->
+      <div id="charts-container"></div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TELA 4: BOAS-VINDAS DO FUNCIONÁRIO (antes de ver as perguntas)
+       Aqui a pessoa lê o aviso de anonimato com calma, respira um pouco
+       e só então decide seguir para o formulário.
+  =================================================================== -->
+  <section id="view-employee-welcome" class="view hidden">
+    <div class="top-nav">
+      <div class="logo">Voz Anônima <span class="test-mode-badge hidden" id="test-badge-welcome">Modo de teste</span></div>
+      <button class="btn secondary test-back-btn hidden" id="btn-back-panel-welcome">← Voltar ao painel</button>
+    </div>
+
+    <div class="signature">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="26" r="24" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+        <path d="M26 16c-5 0-9 3.2-9 8.5 0 6.5 6.6 10.8 9 12.2 2.4-1.4 9-5.7 9-12.2 0-5.3-4-8.5-9-8.5z"
+              stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M21.5 25.2l3 2.8 6-6.4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p>Pode ficar tranquilo(a): sua resposta é anônima. Este dispositivo só guarda um aviso
+      local de que você já respondeu, pra evitar respostas repetidas — isso fica separado da
+      sua resposta, sem nenhuma ligação entre os dois. Fale com sinceridade, no seu tempo.</p>
+    </div>
+
+    <div class="card game-card">
+      <div class="eyebrow" style="text-align:center;">Antes de começar</div>
+      <p class="game-label">Um minutinho pra relaxar</p>
+
+      <div class="puppy-wrap">
+        <div class="puppy-slide-track" id="puppy-track">
+          <img class="puppy-slide active" src="https://images.unsplash.com/photo-1591160690555-5debfba289f0?w=700&q=80" alt="Filhote de golden retriever deitado" />
+          <img class="puppy-slide" src="https://images.unsplash.com/photo-1591768575198-88dac53fbd0a?w=700&q=80" alt="Filhote de cachorro fofo" />
+          <img class="puppy-slide" src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&q=80" alt="Cachorrinho dormindo tranquilo" />
+          <img class="puppy-slide" src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=700&q=80" alt="Filhote fofo olhando para câmera" />
+        </div>
+        <p class="puppy-caption" id="puppy-caption">Respire fundo... 🐾</p>
+      </div>
+
+      <p class="muted" style="text-align:center;max-width:360px;margin:10px auto 22px;">
+        Dê uma olhadinha nesses fofos enquanto se organiza.
+        Quando estiver pronto(a), é só seguir.
+      </p>
+
+      <button class="btn teal" id="btn-start-form" style="display:block;margin:0 auto;padding:13px 34px;">Vamos responder?</button>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TELA 5: FORMULÁRIO DO FUNCIONÁRIO (acessado via o link único #responder)
+  =================================================================== -->
+  <section id="view-employee-form" class="view hidden">
+    <div class="top-nav">
+      <div class="logo">Voz Anônima <span class="test-mode-badge hidden" id="test-badge-form">Modo de teste</span></div>
+      <button class="btn secondary test-back-btn hidden" id="btn-back-panel-form">← Voltar ao painel</button>
+    </div>
+
+    <div class="card" id="employee-form-card">
+      <!-- As perguntas do formulário são inseridas aqui pelo script.js -->
+      <div id="employee-questions"></div>
+      <button class="btn" style="margin-top:6px;" id="btn-submit-feedback">Enviar respostas anônimas</button>
+      <div id="submit-error" class="error-text"></div>
+    </div>
+
+    <p class="reassurance">Não existe resposta certa ou errada — o que importa é o que você sente. 🌿</p>
+  </section>
+
+  <!-- ===================================================================
+       TELA 6: AGRADECIMENTO
+  =================================================================== -->
+  <section id="view-employee-thanks" class="view hidden">
+    <div class="card" style="text-align:center;padding:48px 28px;margin-top:60px;">
+      <h2>Obrigado pela sua resposta</h2>
+      <p class="muted">Sua resposta foi enviada de forma anônima e já está disponível
+      nos resultados agregados do RH.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       TELA 7: JÁ RESPONDIDO NESTE DISPOSITIVO
+  =================================================================== -->
+  <section id="view-already-answered" class="view hidden">
+    <div class="card" style="text-align:center;padding:48px 28px;margin-top:60px;">
+      <h2>Você já respondeu por aqui</h2>
+      <p class="muted">Este dispositivo já enviou uma resposta a este formulário. Isso existe
+      para que cada pessoa responda só uma vez — se você acha que isso é um engano, fale com o RH.</p>
+    </div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

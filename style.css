@@ -1,0 +1,704 @@
+/* ===================================================
+   PALETA DE CORES DO SITE
+   Definidas como variáveis para reutilizar em todo o CSS
+=================================================== */
+:root{
+  --ink:#1B2430;      /* texto de títulos, tom escuro */
+  --slate:#3E5C76;    /* azul acinzentado, textos secundários */
+  --teal:#5FA8A0;     /* cor de destaque (botões de ação, gráficos) */
+  --bg:#F7F7F5;       /* fundo da página */
+  --text:#2B2F33;     /* texto normal */
+  --card:#FFFFFF;     /* fundo dos "cards" */
+  --border:#E2E4E3;   /* linhas e bordas */
+  --danger:#C4573B;   /* vermelho para erros/remover */
+}
+
+* { box-sizing: border-box; }
+
+/* Controla quais telas (.view) e painéis de aba (.tab-panel) aparecem.
+   O script.js apenas adiciona/remove esta classe — não cria elementos. */
+.hidden{ display:none !important; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  min-height:100vh;
+}
+
+h1, h2, h3 { font-family:'Fraunces',serif; color:var(--ink); letter-spacing:-0.01em; }
+
+#app{ max-width:960px; margin:0 auto; padding:32px 20px 80px; }
+
+.eyebrow{
+  text-transform:uppercase; font-size:11px; letter-spacing:0.14em;
+  color:var(--slate); font-weight:600; margin-bottom:6px;
+}
+
+.card{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:14px; padding:28px; margin-bottom:20px;
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--ink); color:#fff; border:none;
+  padding:11px 20px; border-radius:8px; font-weight:600;
+  font-size:14px; cursor:pointer; transition:opacity .12s ease;
+}
+.btn:hover{ opacity:0.88; }
+.btn.secondary{ background:transparent; color:var(--ink); border:1.5px solid var(--border); }
+.btn.teal{ background:var(--teal); }
+.btn.danger{ background:var(--danger); }
+
+input, textarea, select{
+  width:100%; padding:10px 12px; border-radius:8px;
+  border:1.5px solid var(--border); font-family:'Inter',sans-serif;
+  font-size:14px; background:#fff; color:var(--text);
+}
+input:focus, textarea:focus, select:focus{
+  outline:2px solid var(--teal); outline-offset:1px; border-color:var(--teal);
+}
+
+label{ font-size:13px; font-weight:600; color:var(--slate); display:block; margin-bottom:5px; }
+
+.tabs{ display:flex; gap:6px; margin-bottom:22px; flex-wrap:wrap; }
+.tab{
+  padding:9px 16px; border-radius:999px; border:1.5px solid var(--border);
+  background:#fff; font-size:13px; font-weight:600; color:var(--slate); cursor:pointer;
+}
+.tab.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+
+.question-row{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  gap:12px; padding:14px 0; border-bottom:1px solid var(--border);
+}
+.question-row:last-child{ border-bottom:none; }
+.qtag{ font-size:11px; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:0.08em; }
+.pill{
+  display:inline-block; background:#EEF3F2; color:var(--slate);
+  font-size:11px; font-weight:700; padding:3px 9px; border-radius:6px; margin-left:8px;
+}
+
+.scale-btns{ display:flex; gap:8px; margin-top:10px; }
+.scale-btn{
+  width:44px; height:44px; border-radius:10px; border:1.5px solid var(--border);
+  background:#fff; font-weight:700; cursor:pointer; font-size:15px;
+  display:flex; align-items:center; justify-content:center;
+}
+.scale-btn.selected{ background:var(--teal); color:#fff; border-color:var(--teal); }
+.scale-btn:focus-visible{ outline:2.5px solid var(--teal); outline-offset:2px; }
+.chip:focus-visible{ outline:2.5px solid var(--teal); outline-offset:2px; }
+.reorder-btn:focus-visible{ outline:2.5px solid var(--teal); outline-offset:2px; }
+
+.link-row{
+  display:flex; align-items:center; gap:10px; padding:10px 12px;
+  background:#FAFAF9; border:1px solid var(--border); border-radius:8px;
+  margin-bottom:8px; font-size:13px; flex-wrap:wrap;
+}
+.link-row code{ flex:1; overflow-x:auto; white-space:nowrap; color:var(--slate); }
+.used-badge{ font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; }
+.used-badge.no{ background:#E9F5F0; color:#2F7A5E; }
+.used-badge.yes{ background:#F3E9E4; color:var(--danger); }
+
+.signature{
+  display:flex; align-items:center; gap:16px;
+  background:linear-gradient(135deg, var(--ink), var(--slate));
+  color:#fff; border-radius:14px; padding:24px 28px; margin-bottom:24px;
+}
+.signature p{ margin:0; font-size:13.5px; line-height:1.5; opacity:0.92; }
+.signature svg{ flex-shrink:0; }
+
+.muted{ color:var(--slate); font-size:13px; }
+
+.top-nav{ display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; gap:12px; flex-wrap:wrap; }
+.logo{ font-family:'Fraunces',serif; font-weight:600; font-size:19px; color:var(--ink); display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+
+.demo-mode-badge{
+  display:inline-flex; align-items:center;
+  font-family:'Inter',sans-serif; font-weight:600;
+  font-size:10.5px; letter-spacing:0.02em;
+  color:var(--slate); background:#EEF1F0;
+  border:1px solid var(--border);
+  padding:3px 9px; border-radius:999px;
+  cursor:help;
+}
+@media (max-width:520px){
+  .demo-mode-badge{ font-size:9.5px; padding:2px 7px; }
+}
+
+.error-text{ color:var(--danger); font-size:13px; margin-top:6px; }
+.success-text{ color:#2F7A5E; font-size:13px; margin-top:6px; min-height:16px; }
+
+.field-error{
+  padding:12px 14px 14px;
+  margin-left:-14px; margin-right:-14px;
+  border-radius:10px;
+  background:#FBEAE5;
+  box-shadow:0 0 0 1.5px #EFC3B6 inset;
+  animation:field-error-pulse .4s ease;
+}
+@keyframes field-error-pulse{
+  0%{ box-shadow:0 0 0 1.5px #EFC3B6 inset; }
+  40%{ box-shadow:0 0 0 3px var(--danger) inset; }
+  100%{ box-shadow:0 0 0 1.5px #EFC3B6 inset; }
+}
+.test-mode-badge{
+  display:inline-block; margin-left:8px; padding:3px 10px;
+  background:#FBEFE0; color:#9A6A1E; font-size:11px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.05em; border-radius:999px;
+  vertical-align:middle;
+}
+
+.climate-card{
+  display:flex; align-items:center; gap:22px;
+  padding:20px 26px; border-radius:16px; margin-bottom:16px;
+  border:1.5px solid var(--border); background:#fff;
+}
+.climate-score{
+  font-family:'Fraunces',serif; font-size:46px; font-weight:600;
+  color:var(--ink); line-height:1; flex-shrink:0;
+}
+.climate-label{ font-weight:700; font-size:14.5px; color:var(--ink); }
+.climate-desc{ font-size:13px; color:var(--slate); margin-top:3px; line-height:1.5; }
+.climate-card.good{ background:#EAF6F1; border-color:#BFE3D3; }
+.climate-card.good .climate-score{ color:#2F7A5E; }
+.climate-card.mid{ background:#FBF3E2; border-color:#F0DDA8; }
+.climate-card.mid .climate-score{ color:#9A6A1E; }
+.climate-card.low{ background:#FBEAE5; border-color:#EFC3B6; }
+.climate-card.low .climate-score{ color:var(--danger); }
+.empty-state{ text-align:center; padding:40px 20px; color:var(--slate); }
+.field{ margin-bottom:16px; }
+
+.chart-wrap{ position:relative; height:260px; margin-top:8px; }
+
+.stat-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:20px; }
+.stat-box{ background:#FAFAF9; border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center; }
+.stat-num{ font-family:'Fraunces',serif; font-size:28px; color:var(--ink); font-weight:600; }
+.stat-label{ font-size:11.5px; color:var(--slate); text-transform:uppercase; letter-spacing:0.06em; margin-top:2px; }
+
+.text-response{
+  background:#FAFAF9; border-left:3px solid var(--teal);
+  padding:10px 14px; border-radius:6px; margin-bottom:8px; font-size:13.5px;
+}
+.demo-tag{
+  display:inline-block; margin-left:4px; padding:2px 7px;
+  background:#EFEBE3; color:#8A7A5C; font-size:10px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.04em; border-radius:999px;
+  vertical-align:middle;
+}
+
+.question-result-header{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  gap:14px; margin-bottom:12px;
+}
+.score-badge{
+  display:flex; flex-direction:column; align-items:center; gap:1px;
+  padding:6px 14px; border-radius:12px; flex-shrink:0;
+  font-family:'Fraunces',serif; font-size:20px; font-weight:600; line-height:1.1;
+}
+.score-badge-label{
+  font-family:'Inter',sans-serif; font-size:9.5px; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.04em; opacity:0.85;
+}
+.score-badge.good{ background:#EAF6F1; color:#2F7A5E; }
+.score-badge.mid{ background:#FBF3E2; color:#9A6A1E; }
+.score-badge.low{ background:#FBEAE5; color:var(--danger); }
+.score-badge.neutral{ background:#F1F2F1; color:#6B7580; }
+
+.insight-text{
+  margin:12px 0 0; padding:10px 14px; border-radius:8px;
+  font-size:13px; line-height:1.55;
+}
+.insight-text.good{ background:#EAF6F1; color:#2F7A5E; }
+.insight-text.mid{ background:#FBF3E2; color:#9A6A1E; }
+.insight-text.low{ background:#FBEAE5; color:var(--danger); }
+.insight-text.neutral{ background:#F1F2F1; color:#6B7580; }
+
+@media (max-width:600px){
+  .stat-grid{ grid-template-columns:1fr; }
+
+  #app{ padding:20px 14px 60px; }
+
+  #employee-form-card{ padding:24px 18px; border-radius:16px; }
+  .game-card{ padding:24px 18px 22px; }
+
+  #employee-form-card .scale-btns{ gap:6px; }
+  #employee-form-card .scale-btn{ width:auto; flex:1; height:46px; border-radius:11px; font-size:14.5px; }
+
+  .scale-btns{ gap:6px; }
+  .scale-btn{ width:auto; flex:1; height:40px; font-size:14px; }
+
+  .climate-card{ flex-direction:column; align-items:flex-start; gap:10px; padding:18px 20px; }
+
+  .question-result-header{ flex-direction:column; gap:8px; }
+  .score-badge{ flex-direction:row; gap:8px; align-self:flex-start; padding:6px 12px; }
+
+  .chart-wrap{ height:220px; }
+
+  .puppy-slide-track{ height:200px; }
+
+  .signature{ flex-direction:column; align-items:flex-start; gap:12px; padding:20px; }
+
+  .top-nav .btn{ padding:9px 14px; font-size:13px; }
+}
+
+/* ===================================================
+   TELA DO FUNCIONÁRIO — camada "calma"
+   Aplicada só quando view-employee-form está visível.
+   Objetivo: reduzir a tensão de quem vai responder,
+   com cores mais suaves, mais espaço em branco e
+   uma linguagem visual mais gentil.
+=================================================== */
+#view-employee-form, #view-employee-welcome{
+  min-height:100vh;
+  margin:-32px -20px -80px;
+  padding:40px 20px 80px;
+  background:
+    radial-gradient(600px 300px at 15% -5%, #EAF3F1 0%, transparent 60%),
+    radial-gradient(500px 260px at 100% 10%, #FBF3E9 0%, transparent 55%),
+    #FBFBF9;
+}
+
+#view-employee-form .top-nav, #view-employee-welcome .top-nav{
+  max-width:640px; margin:0 auto 24px;
+}
+
+#view-employee-form .signature, #view-employee-welcome .signature{
+  max-width:640px; margin:0 auto 26px;
+  background:linear-gradient(135deg, #3E6E68, #5FA8A0);
+  border-radius:20px;
+  padding:26px 30px;
+  box-shadow:0 12px 30px -14px rgba(63,110,104,0.45);
+}
+#view-employee-form .signature p, #view-employee-welcome .signature p{
+  font-size:14px; line-height:1.6;
+}
+
+/* ---------- Cartão e carrossel de fotos de cachorrinhos (tela de boas-vindas) ---------- */
+.game-card{
+  max-width:640px; margin:0 auto;
+  border-radius:20px;
+  padding:32px 32px 30px;
+  border:1px solid #ECEEE9;
+  box-shadow:0 20px 50px -30px rgba(27,36,48,0.25);
+  text-align:center;
+}
+
+.game-label{
+  font-family:'Fraunces',serif;
+  font-size:19px;
+  color:var(--ink);
+  margin:6px 0 18px;
+}
+
+.puppy-wrap{
+  max-width:420px; margin:0 auto;
+}
+
+.puppy-slide-track{
+  position:relative;
+  width:100%;
+  height:260px;
+  border-radius:16px;
+  overflow:hidden;
+  background:#EAF3F1;
+  box-shadow:0 14px 34px -18px rgba(63,110,104,0.5);
+}
+
+.puppy-slide{
+  position:absolute;
+  inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+.puppy-slide.active{
+  opacity:1;
+}
+
+.puppy-caption{
+  font-size:13px;
+  color:var(--slate);
+  margin-top:12px;
+  min-height:18px;
+}
+
+#employee-form-card{
+  max-width:640px; margin:0 auto;
+  border-radius:20px;
+  padding:36px 32px;
+  border:1px solid #ECEEE9;
+  box-shadow:0 20px 50px -30px rgba(27,36,48,0.25);
+}
+
+#employee-form-card .field{
+  margin-bottom:26px;
+}
+#employee-form-card .field:last-of-type{
+  margin-bottom:20px;
+}
+
+#employee-form-card label{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:16.5px;
+  color:var(--ink);
+  line-height:1.45;
+  margin-bottom:12px;
+}
+
+#employee-form-card textarea{
+  border-radius:12px;
+  border:1.5px solid #E4E7E2;
+  background:#FCFCFB;
+  padding:14px 16px;
+  font-size:14.5px;
+  line-height:1.6;
+  resize:vertical;
+}
+#employee-form-card textarea:focus{
+  background:#fff;
+}
+
+/* Escala de resposta mais macia, com respostas em tom de calor gradual
+   em vez de um único "azul acionável" — reduz a sensação de teste/prova */
+#employee-form-card .scale-btns{
+  gap:10px;
+  margin-top:14px;
+}
+#employee-form-card .scale-btn{
+  width:50px; height:50px;
+  border-radius:14px;
+  border:1.5px solid #E4E7E2;
+  background:#FCFCFB;
+  font-family:'Fraunces',serif;
+  font-size:16px;
+  color:var(--slate);
+  transition:transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+}
+#employee-form-card .scale-btn:hover{
+  transform:translateY(-2px);
+  border-color:#C9DEDA;
+}
+#employee-form-card .scale-btn.selected{
+  background:#5FA8A0;
+  border-color:#5FA8A0;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+#employee-form-card .scale-hint{
+  display:flex; justify-content:space-between;
+  max-width:280px; margin-top:6px;
+  font-size:11.5px; color:var(--slate); opacity:0.75;
+}
+
+#employee-form-card #btn-submit-feedback{
+  background:#3E6E68;
+  border-radius:12px;
+  padding:13px 24px;
+  font-size:14.5px;
+  letter-spacing:0.01em;
+  box-shadow:0 10px 24px -12px rgba(62,110,104,0.55);
+}
+#employee-form-card #btn-submit-feedback:hover{
+  opacity:0.92;
+}
+
+#view-employee-form .reassurance{
+  max-width:640px; margin:14px auto 0;
+  text-align:center;
+  font-size:12.5px;
+  color:var(--slate);
+  opacity:0.85;
+}
+
+/* Tela de agradecimento / já respondido neste dispositivo também ganham
+   o mesmo fundo acolhedor, já que fazem parte da jornada do funcionário */
+#view-employee-thanks, #view-already-answered{
+  min-height:100vh;
+  margin:-32px -20px -80px;
+  padding:40px 20px 80px;
+  background:
+    radial-gradient(600px 300px at 15% -5%, #EAF3F1 0%, transparent 60%),
+    radial-gradient(500px 260px at 100% 10%, #FBF3E9 0%, transparent 55%),
+    #FBFBF9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#view-employee-thanks .card, #view-already-answered .card{
+  max-width:460px;
+  border-radius:22px;
+  box-shadow:0 20px 50px -30px rgba(27,36,48,0.25);
+  margin-top:0 !important;
+}
+
+/* ===================================================
+   PÁGINA INICIAL (landing) — hero + jornada + contexto
+   Voltada para quem lidera RH: mais institucional,
+   contando a história de uso da ferramenta em 3 passos.
+=================================================== */
+.hero{
+  max-width:640px;
+  margin:8px 0 28px;
+}
+.hero h1{
+  font-size:34px;
+  line-height:1.18;
+  margin:8px 0 14px;
+  color:var(--ink);
+}
+.hero-sub{
+  font-size:15.5px;
+  line-height:1.6;
+  color:var(--slate);
+  max-width:520px;
+}
+
+/* Linha do tempo em 3 passos */
+.journey{
+  display:flex;
+  align-items:flex-start;
+  gap:0;
+  margin:32px 0 26px;
+}
+.journey-step{
+  flex:1;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px 20px 24px;
+  position:relative;
+}
+.journey-icon{
+  width:38px; height:38px;
+  border-radius:10px;
+  background:#EAF3F1;
+  color:var(--teal);
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:14px;
+}
+.journey-num{
+  position:absolute;
+  top:18px; right:18px;
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  font-size:13px;
+  color:var(--border);
+}
+.journey-step h3{
+  font-size:16px;
+  margin:0 0 8px;
+}
+.journey-step p{
+  font-size:13.5px;
+  line-height:1.55;
+  color:var(--slate);
+  margin:0;
+}
+.journey-connector{
+  width:28px;
+  height:1.5px;
+  background:var(--border);
+  margin-top:38px;
+  flex-shrink:0;
+}
+
+@media (max-width:760px){
+  .journey{ flex-direction:column; gap:14px; }
+  .journey-connector{ display:none; }
+}
+
+/* Faixa de contexto com números de exemplo */
+.context-band{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+  background:linear-gradient(135deg, #EAF3F1, #FBF3E9);
+  border-radius:14px;
+  padding:24px 20px;
+  margin-bottom:6px;
+}
+.context-stat{ text-align:center; }
+.context-num{
+  font-family:'Fraunces',serif;
+  font-size:30px;
+  font-weight:600;
+  color:#3E6E68;
+}
+.context-label{
+  font-size:12px;
+  color:var(--slate);
+  line-height:1.4;
+  margin-top:4px;
+}
+.context-footnote{
+  font-size:11px;
+  color:var(--slate);
+  opacity:0.7;
+  text-align:right;
+  margin:6px 0 22px;
+}
+
+@media (max-width:600px){
+  .context-band{ grid-template-columns:1fr; }
+  .hero h1{ font-size:27px; }
+}
+
+/* ===================================================
+   PAINEL DE PERGUNTAS (RH) — progresso, sugestões,
+   preview ao vivo e lista reordenável
+=================================================== */
+
+/* Cabeçalho de progresso do formulário */
+.progress-bar-card{
+  display:flex; justify-content:space-between; align-items:center;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:14px 18px; margin-bottom:18px;
+  font-size:13.5px; color:var(--slate); font-weight:600;
+}
+.progress-info{ display:flex; align-items:center; gap:8px; }
+.progress-info.muted-right{ font-weight:500; opacity:0.85; }
+.progress-dot{
+  width:9px; height:9px; border-radius:50%;
+  background:var(--border); flex-shrink:0;
+  transition:background .2s ease;
+}
+.progress-dot.progress-dot-ok{ background:var(--teal); }
+
+/* Layout lado a lado: montar pergunta | preview ao vivo */
+.builder-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:20px;
+  align-items:start;
+}
+@media (max-width:820px){
+  .builder-grid{ grid-template-columns:1fr; }
+}
+
+/* Chips de sugestão de pergunta */
+.chip-row{
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin-top:4px;
+}
+.chip{
+  background:#EEF3F2; border:1px solid transparent;
+  color:var(--slate); font-size:12.5px; font-weight:600;
+  padding:7px 13px; border-radius:999px; cursor:pointer;
+  transition:background .12s ease, border-color .12s ease;
+  max-width:100%;
+  text-align:left;
+}
+.chip:hover{ background:#E0EDEA; border-color:#C9DEDA; }
+
+/* Preview ao vivo */
+.preview-card{
+  background:#FAFAF9;
+  position:sticky;
+  top:16px;
+}
+.preview-frame{
+  border:1.5px dashed var(--border);
+  border-radius:12px;
+  padding:20px 18px;
+  margin-top:10px;
+  background:#fff;
+}
+.preview-question{
+  font-family:'Fraunces',serif;
+  font-size:15.5px;
+  color:var(--ink);
+  margin-bottom:14px;
+  line-height:1.4;
+}
+.preview-scale .scale-btn{
+  width:38px; height:38px; font-size:13px;
+  cursor:default;
+}
+.preview-scale .scale-btn:hover{ transform:none; }
+.preview-textarea{
+  width:100%; min-height:70px;
+  border-radius:10px; border:1.5px solid var(--border);
+  padding:10px 12px; font-family:'Inter',sans-serif; font-size:13.5px;
+  background:#FCFCFB; color:var(--slate); resize:none;
+}
+
+/* Lista de perguntas: cards com controles de reordenar */
+.question-row{
+  display:flex; align-items:flex-start; gap:12px;
+}
+.reorder-controls{
+  display:flex; flex-direction:column; gap:2px;
+  flex-shrink:0; margin-top:2px;
+}
+.reorder-btn{
+  width:22px; height:18px;
+  border:1px solid var(--border); background:#fff;
+  border-radius:5px; font-size:9px; line-height:1;
+  color:var(--slate); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.reorder-btn:hover:not(:disabled){ background:#F0F3F2; }
+.reorder-btn:disabled{ opacity:0.3; cursor:default; }
+
+.question-row[draggable="true"]{ cursor:grab; }
+.question-row.dragging{ opacity:0.4; }
+
+/* Resumo do formulário: contagem escala vs texto */
+.form-summary{
+  display:flex; align-items:center; justify-content:center;
+  gap:20px;
+  margin-top:18px; padding:14px 10px;
+  background:#F7F9F8; border-radius:10px;
+}
+.summary-item{
+  display:flex; flex-direction:column; align-items:center;
+  gap:2px;
+}
+.summary-num{
+  font-family:'Fraunces',serif; font-weight:600; font-size:20px;
+  color:#3E6E68;
+}
+.summary-label{
+  font-size:11px; color:var(--slate); text-transform:uppercase; letter-spacing:0.04em;
+}
+.summary-divider{
+  width:1px; height:28px; background:var(--border);
+}
+
+/* Caixa de dicas de boas práticas */
+.tips-box{
+  margin-top:16px;
+  padding:16px 18px;
+  background:#FBF3E9;
+  border-radius:10px;
+}
+.tips-title{
+  font-size:12.5px; font-weight:700; color:var(--ink);
+  margin-bottom:8px;
+}
+.tips-list{
+  margin:0; padding-left:18px;
+  font-size:12.5px; line-height:1.65; color:var(--slate);
+}
+.tips-list li{ margin-bottom:4px; }
+.tips-list li:last-child{ margin-bottom:0; }
+
+/* Cabeçalho de lista com botão de ação (ex: limpar tudo) */
+.list-header{
+  display:flex; justify-content:space-between; align-items:center;
+  gap:12px; margin-bottom:6px; flex-wrap:wrap;
+}
+.btn.danger-ghost{
+  background:transparent; color:var(--danger);
+  border:1.5px solid #F0DCD5;
+  padding:7px 14px; font-size:12.5px;
+}
+.btn.danger-ghost:hover{
+  background:#FBF0EC; opacity:1;
+}
