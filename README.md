@@ -2,7 +2,7 @@
 
 Aplicação web para coleta de feedback anônimo de equipes, com painel de RH para criação de perguntas, geração de um link único de acesso e visualização de resultados agregados em gráficos.
 
-**Demo ao vivo:** [link será adicionado após publicação no GitHub Pages]
+**site:** https://gabrielazanotelli.github.io/voz-anonima/
 
 ## Contexto
 
@@ -33,4 +33,4 @@ Esta é uma versão de demonstração: todos os dados ficam salvos apenas no nav
 
 ## Autoria
 
-Desenvolvido por **Gabriela Falbo Zanotelli** — [LinkedIn](https://linkedin.com/in/gabriela-falbo-zanotelli)
+Desenvolvido por **Gabriela Falbo Zanotelli** — (https://linkedin.com/in/gabriela-falbo-zanotelli)
